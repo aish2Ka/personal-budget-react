@@ -29,6 +29,15 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+    integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +48,49 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    var dataSource = {
+        datasets: [
+          {
+            data: [30, 350, 90],
+            backgroundColor: [
+              "#ffcd56",
+              "#ff6384",
+              "#36a2eb",
+              "#fd6b19",
+              "#ff0000",
+              "#007f00",
+              "#280028",
+            ],
+          },
+        ],
+        labels: [ 'Eat Out',
+                'Rent',
+                'Groceries'],
+      };
+
+      function createChart() {
+        var ctx = document.getElementById("myChart").getContext("2d");
+        if (window.myPieChart) {
+                window.myPieChart.destroy();
+            }
+        var myPieChart = new Chart(ctx, {
+          type: "pie",
+          data: dataSource,
+        });
+      }
+
+      function getBudget() {
+        axios.get("/budget").then(function (res) {
+          for (var i = 0; i < res.data.Aishwarya_Budget.length; i++) {
+            dataSource.datasets[0].data[i] =
+              res.data.Aishwarya_Budget[i].budget;
+            dataSource.labels[i] = res.data.Aishwarya_Budget[i].title;
+          }
+        }).then(function (){
+          createChart();
+        });
+      }
+
+      getBudget();
+  </script>
   </body>
-</html>
