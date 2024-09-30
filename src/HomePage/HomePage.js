@@ -106,8 +106,8 @@ function HomePage() {
               try {
                 const response = await axiosGet('/budget');
 
-                if (response && response.data && response.data.myBudget) {
-                    const myBudgetData = response.data.myBudget;
+                if (response && response.data && response.data.Aishwarya_Budget) {
+                    const myBudgetData = response.data.Aishwarya_Budget;
 
                     const labels = myBudgetData.map((item) => item.title);
                     const data = myBudgetData.map((item) => item.budget);

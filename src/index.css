@@ -349,6 +349,21 @@ template {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -388,23 +403,23 @@ nav ul li a:hover  {
   color: #4d5791;
 }
 
-header.hero {
+div.hero {
   height: 350px;
   background-color: #b4c6f0;
-  background-image: url('bg.png'); 
+  background-image: url('../public/bg.png');
   background-size: 400px;
   background-repeat: no-repeat;
   background-position: center bottom;
   padding-top: 40px;
 }
 
-header.hero h1,
-header.hero h2 {
+div.hero h1,
+div.hero h2 {
   text-align: center;
   margin: 0;
 }
 
-header.hero h1 {
+div.hero h1 {
   color: #fff;
   font-size: 4.2em;
   margin-bottom: 20px;
@@ -422,17 +437,6 @@ main {
 .page-area {
   max-width: 768px;
   display: inline-block;
-}
-
-.page-area-charts {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.page-area-charts article {
-  width: 45%;
-  margin: 0;
 }
 
 footer {
